@@ -18,9 +18,8 @@ void setup()
 
 void loop()
 {
-  Serial.println(analogRead(A2));
-  // read the sensor on analog A1:
   int sensorReading = analogRead(A1);
+  
   // map the sensor range (four options):
   // ex: 'long int map(long int, long int, long int, long int, long int)'
   int range = map(sensorReading, sensorMin, sensorMax, 0, 3);
@@ -34,7 +33,7 @@ void loop()
     str.toCharArray(message, 16);
     tone(8, 1000);
     break;
-  case 1:    // A fire between 1-3 feet away.
+  case 1:    // A fire between 1.5-3 feet away.
     str = "Distant Fire!    ";
     str.toCharArray(message, 16);
     tone(8, 1000);
@@ -54,7 +53,5 @@ void loop()
     const char *msg = message;
     driver.send((uint8_t *)msg, strlen(msg));
     driver.waitPacketSent();
-    delay(1000);
-
-    
+    delay(500);
 }

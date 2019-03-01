@@ -6,13 +6,12 @@
 RH_ASK driver;
 
 
-const int rs = 12, en = 8, d4 = 5, d5 = 4, d6 = 3, d7 = 2;
-LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
+const int RS = 12, EN = 8, D4 = 5, D5 = 4, D6 = 3, D7 = 2;
+LiquidCrystal lcd(RS, EN, D4, D5, D6, D7);
 
 void setup() {
-  // set up the LCD's number of columns and rows:
+  Serial.begin(9600);
   lcd.begin(16, 2);
-  // Print a message to the LCD.
   lcd.print("Temperature: ");
 
   if (!driver.init())
@@ -23,10 +22,7 @@ void loop() {
   uint8_t buf[16];
   uint8_t buflen = sizeof(buf);
   if (driver.recv(buf, &buflen)){
-    int i;
     lcd.setCursor(0,1);
     lcd.print((char *)buf);
-    //lcd.setCursor(8, 1);
-    //lcd.print("    ");
   }
 }
