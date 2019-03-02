@@ -6,3 +6,5 @@ ECE 387 - Midterm Project: Basic Chip Design
 ### Midterm2.ino - Slave Arduino Board Code
 
 Please See Wiki for Project Details
+
+NOTE: Original IR Sensor DOA --> Awaiting new sensor's arrival
