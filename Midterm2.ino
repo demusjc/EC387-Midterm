@@ -4,41 +4,36 @@
 RH_ASK driver;
 int sensorPin = 0;
 
-const int sensorMin = 0;     // sensor minimum
-const int sensorMax = 1024;  // sensor maximum
+// const int sensorMin = 0;     // sensor minimum
+// const int sensorMax = 1024;  // sensor maximum
 
 int firePin = 1;
 
 void setup()
 {
-  pinMode(A1, INPUT);
+  pinMode(5, INPUT);
     if (!driver.init())
          Serial.println("init failed");
 }
 
 void loop()
 {
-  int sensorReading = analogRead(A1);
+  int sensorReading = digitalRead(5);
   
   // map the sensor range (four options):
   // ex: 'long int map(long int, long int, long int, long int, long int)'
-  int range = map(sensorReading, sensorMin, sensorMax, 0, 3);
+  // int range = map(sensorReading, sensorMin, sensorMax, 0, 3);
 
   char message[16];
   String str;
   // range value:
-  switch (range) {
-  case 0:    // A fire closer than 1.5 feet away.
+  switch (sensorReading) {
+  case 0:    // A fire is close.
     str = "Close Fire!    ";
     str.toCharArray(message, 16);
     tone(8, 1000);
     break;
-  case 1:    // A fire between 1.5-3 feet away.
-    str = "Distant Fire!    ";
-    str.toCharArray(message, 16);
-    tone(8, 1000);
-    break;
-  case 2:    // No fire detected.
+  case 1:    // No fire detected.
     int reading = analogRead(sensorPin);
     float voltage = reading * 5.0;
     voltage /= 1024.0;
