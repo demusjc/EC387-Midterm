@@ -7,4 +7,4 @@ ECE 387 - Midterm Project: Basic Chip Design
 
 Please See Wiki for Project Details
 
-NOTE: Original IR Sensor DOA --> Awaiting new sensor's arrival
+NOTE: Original IR Sensor DOA --> New IR Sensor lacks Analog Pin; used digital pin instead
